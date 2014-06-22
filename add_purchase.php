@@ -179,10 +179,34 @@ function numbersonly(e){
     sell=document.getElementById('sell').value;
     disc=document.getElementById('stock').value;
     total=document.getElementById('total').value;
-    item=document.getElementById('guid').value;
+    item1=document.getElementById('guid').value;
     main_total=document.getElementById('posnic_total').value;
  
-    $('<tr id='+item+'><td><input type=hidden value='+item+' id='+item+'id ><input type=text name="stock_name[]"  id='+item+'st style="width: 150px" class="round  my_with" ></td><td><input type=text name=quty[] readonly="readonly" value='+quty+' id='+item+'q class="round  my_with" style="text-align:right;" ></td><td><input type=text name=cost[] readonly="readonly" value='+cost+' id='+item+'c class="round  my_with" style="text-align:right;"></td><td><input type=text name=sell[] readonly="readonly" value='+sell+' id='+item+'s class="round  my_with" style="text-align:right;"  ></td><td><input type=text name=stock[] readonly="readonly" value='+disc+' id='+item+'p class="round  my_with" style="text-align:right;" ></td><td><input type=text name=jibi[] readonly="readonly" value='+total+' id='+item+'to class="round  my_with" style="width: 120px;margin-left:20px;text-align:right;" ><input type=hidden name=total[] id='+item+'my_tot value='+main_total+'> </td><td><input type=button value="" id='+item+' style="width:30px;border:none;height:30px;background:url(images/edit_new.png)" class="round" onclick="edit_stock_details(this.id)"  ></td><td><input type=button value="" id='+item+' style="width:30px;border:none;height:30px;background:url(images/close_new.png)" class="round" onclick= $(this).closest("tr").remove() ></td></tr>').fadeIn("slow").appendTo('#item_copy_final');
+    var cde  = '<tr id="'+item1+'" class="ligne">';
+    cde += '<td><label id="'+item1+'roll" class="jibi007">'+roll+'</label>';
+    cde += '</td>';
+    cde += '<td>';
+    cde += '<input type="hidden" value="'+item1+'" id="'+item1+'id">';
+    cde += '<input type="text" name="stock_name[]" id="'+item1+'st" style="width:150px" class="round  my_with" readonly="readonly">';
+    cde += '</td><td>';
+    cde += '<input type="text" name="quty[]"  readonly="readonly" value="'+quty+'"  id="'+item1+'q"  class="round my_with" style="text-align:right;">';
+    cde += '</td><td>';
+    cde += '<input type="text" name="cost[]"  readonly="readonly" value="'+cost+'"  id="'+item1+'c"  class="round my_with" style="text-align:right;">';
+    cde += '</td><td>';
+    cde += '<input type="text" name="sell[]"  readonly="readonly" value="'+sell+'"  id="'+item1+'s"  class="round my_with" style="text-align:right;">';
+    cde += '</td><td>';
+    cde += '<input type="text" name="stock[]" readonly="readonly" value="'+disc+'"  id="'+item1+'p"  class="round my_with" style="text-align:right;">';
+    cde += '</td><td>';
+    cde += '<input type="text" name="jibi[]"  readonly="readonly" value="'+total+'" id="'+item1+'to" class="round my_with" style="width: 120px;margin-left:20px;text-align:right;">';
+    cde += '<input type="hidden" name="total[]" id="'+item1+'my_tot" value="'+main_total+'">';
+    cde += '</td><td>';
+    cde += '<input type="button" value="" id="'+item1+'" style="width:30px;border:none;height:30px;background:url(images/edit_new.png)"  class="round" onclick="edit_stock_details(this.id)">';
+    cde += '</td><td>';
+    cde += '<input type="button" value="" id="'+item1+'" style="width:30px;border:none;height:30px;background:url(images/close_new.png)" class="round" onclick="reduce_balance(\''+item1+'\');$(this).closest(\'tr\').remove();">';
+    cde += '</td><td>';
+    cde += '</tr>';
+    $( cde).fadeIn("slow").appendTo('#item_copy_final');
+
     document.getElementById('quty').value="";
     document.getElementById('cost').value="";
     document.getElementById('sell').value="";
@@ -196,8 +220,8 @@ function numbersonly(e){
     document.getElementById('grand_total').value=parseFloat(document.getElementById('grand_total').value)+parseFloat(main_total);
     }
      document.getElementById('main_grand_total').value=parseFloat(document.getElementById('grand_total').value);
-    document.getElementById(item+'st').value=code;
-    document.getElementById(item+'to').value=total;
+    document.getElementById(item1+'st').value=code;
+    document.getElementById(item1+'to').value=total;
      document.getElementById('item').focus();
 
 }else{
